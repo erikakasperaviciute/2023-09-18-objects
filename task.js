@@ -104,16 +104,20 @@ console.log(getAllActivities());
 //        8.1. Naują veiklos šalį prie šalių masyvo.
 //        8.2. Naują veiklos rūšį prie veiklų masyvo.
 
-company1.workingLocations.addWorkingLocation = function (locationToAdd) {
-  company1.workingLocations.push(locationToAdd);
+function addActivityArea(activityToAdd) {
+  this.activityAreas.push(activityToAdd);
+}
+
+company1.addWorkingLocation = function (locationToAdd) {
+  this.workingLocations.push(locationToAdd);
 };
-company1.workingLocations.addWorkingLocation("Estonia");
+company1.addWorkingLocation("Estonia");
 console.log(company1.workingLocations);
 
-company1.activityAreas.addActivityArea = function (activityToAdd) {
-  company1.activityAreas.push(activityToAdd);
+company1.addActivityArea = function (activityToAdd) {
+  this.activityAreas.push(activityToAdd);
 };
-company1.activityAreas.addActivityArea("Web design");
+company1.addActivityArea("Web design");
 console.log(company1.activityAreas);
 
 // 9. Sukurti funkcijas, kurios pašalina:
