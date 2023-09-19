@@ -27,13 +27,9 @@ company1.employees = 20;
 company1.ceo = "Vardenis Paverdenis";
 
 company1.workingLocations = ["Lithunia", "Latvia"];
-// company1.workingLocations.location1 = "Lithunia";
-// company1.workingLocations.location2 = "Latvia";
+
 console.log(company1);
 
-// company1.activityAreas = new Object();
-// company1.activityAreas.activity1 = "e-shop development";
-// company1.activityAreas.activity2 = "e-shop audit";
 company1.activityAreas = ["e-shop development", "e-shop audit"];
 
 company1.contacts = new Object();
@@ -71,29 +67,14 @@ company1.switchNvo = function () {
 
 company1.setNotNvo();
 
-// company1.switchNvo();
-// console.log(company1.isNvo);
-// company1.switchNvo();
-// console.log(company1.isNvo);
-
 // 7. Sukurti funkcijas, kurios grąžina:
 //        7.1. Šalis, kuriose veikia įmonė į vieną string'ą.
 //        7.2. Veiklos sritis, kuriose veikia įmonė į vieną string'ą.
-
-// company1.workingLocations.getAllLocations = function () {
-//   return `${this.location1}, ${this.location2}`;
-// };
 
 function getAllLocations() {
   return company1.workingLocations.join(", ");
 }
 console.log(getAllLocations());
-
-// company1.activityAreas.getAllActivities = function () {
-//   return `${this.activity1}, ${this.activity2}`;
-// };
-
-// console.log(company1.activityAreas.getAllActivities());
 
 function getAllActivities() {
   return company1.activityAreas.join(", ");
@@ -103,10 +84,6 @@ console.log(getAllActivities());
 // 8. Sukurti funkcijas, kurios prideda:
 //        8.1. Naują veiklos šalį prie šalių masyvo.
 //        8.2. Naują veiklos rūšį prie veiklų masyvo.
-
-function addActivityArea(activityToAdd) {
-  this.activityAreas.push(activityToAdd);
-}
 
 company1.addWorkingLocation = function (locationToAdd) {
   this.workingLocations.push(locationToAdd);
