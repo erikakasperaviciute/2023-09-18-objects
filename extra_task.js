@@ -366,21 +366,66 @@ task719(posts);
 
 // 7.20. HTML faile sukurti ul elementą ir kiekvieną masyvo nario property "title" reikšmę, kaip li elementą, išvesti į ul elementą.
 
-function createLi(selector, post) {
-  let liElement = document.createElement("li");
-  liElement.textContent = post;
-  let ulElement = document.querySelector(selector);
-  ulElement.append(liElement);
+// function createLi(selector, post) {
+//   let liElement = document.createElement("li");
+//   liElement.textContent = post;
+//   let ulElement = document.querySelector(selector);
+//   ulElement.append(liElement);
+// }
+
+// function task720(data) {
+//   if (data.length > 0) {
+//     data.forEach((post) => {
+//       createLi("ul.ul-element720", post.title);
+//     });
+//   } else {
+//     console.log(`The array is empty`);
+//   }
+// }
+
+// task720(posts);
+
+// function createList(data, title, id, selector) {
+//   let divElement = document.querySelector("#content");
+//   divElement.innerHTML += `<h4>${title}</h4>
+//                             <ul id="${id}"></ul>`;
+//   let ulElement = document.querySelector(`#${id}`);
+//   data.forEach((post) => {
+//     ulElement.innerHTML += `<li>${post[selector]}</li>`;
+//   });
+// }
+
+// function task720(data) {
+//   if (data.length > 0) {
+//     createList(data, "Task 7.20", "ul720", "title");
+//   } else {
+//     console.log(`The array is empty`);
+//   }
+// }
+
+// task720(posts);
+
+function createList(title, listArr) {
+  let divElement = document.querySelector("#content");
+  let ulElement = document.createElement("ul");
+  let h4Element = document.createElement("h4");
+  h4Element.textContent = title;
+  divElement.append(h4Element, ulElement);
+  listArr.forEach((post) => {
+    let liElement = document.createElement("li");
+    liElement.textContent = post;
+    ulElement.append(liElement);
+  });
 }
 
 function task720(data) {
-  if (data.length > 0) {
-    data.forEach((post) => {
-      createLi("ul.ul-element720", post.title);
-    });
-  } else {
+  if (data.length === 0) {
     console.log(`The array is empty`);
+    return;
   }
+
+  let listArr720 = data.map((post) => post.title);
+  createList("Task 7.20", listArr720);
 }
 
 task720(posts);
@@ -388,103 +433,110 @@ task720(posts);
 // 7.21. HTML faile sukurti ul elementą ir kiekvieną masyvo nario property "title" ir "body" išvesti tokiu formatu: Title: "post title". Content: "post content".
 
 function task721(data) {
-  if (data.length > 0) {
-    data.forEach((post) => {
-      let output = `Title: "${post.title}". Content: "${post.body}"`;
-      createLi("ul.ul-element721", output);
-    });
-  } else {
+  if (data.length === 0) {
     console.log(`The array is empty`);
+    return;
   }
+
+  let listArr721 = data.map((post) => {
+    return `Title: "${post.title}". Content: "${post.body}"`;
+  });
+  createList("Task 7.21", listArr721);
 }
 
 task721(posts);
 
 // 7.22. HTML faile sukurti ul elementą ir tokiu pačiu formatu, kaip ankstesnėje užduotyje, išvesti tik tuos masyvo narius, kurių pavadinimas prasideda raide "s".
 function task722(data) {
-  if (data.length > 0) {
-    data.forEach((post) => {
-      if (post.title.startsWith("s")) {
-        let output = `Title: "${post.title}". Content: "${post.body}"`;
-        createLi("ul.ul-element722", output);
-      }
-    });
-  } else {
+  if (data.length === 0) {
     console.log(`The array is empty`);
+    return;
   }
+
+  let filteredPosts = data.filter((post) => post.title.startsWith("s"));
+  let listArr722 = filteredPosts.map((post) => {
+    return `Title: "${post.title}". Content: "${post.body}"`;
+  });
+  createList("Task 7.22", listArr722);
 }
 
 task722(posts);
 
 // 7.23. HTML faile sukurti ul elementą ir tokiu pačiu formatu, kaip ankstesnėje užduotyje, išvesti tik tuos masyvo narius, kurių pavadinimas baigiasi "t" arba "m".
 function task723(data) {
-  if (data.length > 0) {
-    data.forEach((post) => {
-      if (post.title.endsWith("t") || post.title.endsWith("m")) {
-        let output = `Title: "${post.title}". Content: "${post.body}"`;
-        createLi("ul.ul-element723", output);
-      }
-    });
-  } else {
+  if (data.length === 0) {
     console.log(`The array is empty`);
+    return;
   }
+
+  let filteredPosts = data.filter(
+    (post) => post.title.endsWith("t") || post.title.endsWith("m")
+  );
+  let listArr723 = filteredPosts.map((post) => {
+    return `Title: "${post.title}". Content: "${post.body}"`;
+  });
+  createList("Task 7.23", listArr723);
 }
 
 task723(posts);
 
 // 7.24. HTML faile sukurti ul elementą ir tokiu pačiu formatu, kaip ankstesnėje užduotyje, išvesti tik tuos masyvo narius, kurių pavadinimas turi daugiau simbolių nei 15.
 function task724(data) {
-  if (data.length > 0) {
-    data.forEach((post) => {
-      if (post.title.length > 15) {
-        let output = `Title: "${post.title}". Content: "${post.body}"`;
-        createLi("ul.ul-element724", output);
-      }
-    });
-  } else {
+  if (data.length === 0) {
     console.log(`The array is empty`);
+    return;
   }
+
+  let filteredPosts = data.filter((post) => post.title.length > 15);
+  let listArr724 = filteredPosts.map((post) => {
+    return `Title: "${post.title}". Content: "${post.body}"`;
+  });
+  createList("Task 7.24", listArr724);
 }
 
 task724(posts);
 
 // 7.25. HTML faile sukurti ul elementą ir tokiu pačiu formatu, kaip ankstesnėje užduotyje, išvesti tik tuos masyvo narius, kurių pavadinimas turi mažiau simbolių nei 20 ir kurių "body" turi daugiau simbolių nei 50.
 function task725(data) {
-  if (data.length > 0) {
-    data.forEach((post) => {
-      let titleLength = post.title.length;
-      let contentLength = post.body.length;
-      if (titleLength > 20 && contentLength > 50) {
-        let output = `Title: "${post.title}". Content: "${post.body}"`;
-        createLi("ul.ul-element725", output);
-      }
-    });
-  } else {
+  if (data.length === 0) {
     console.log(`The array is empty`);
+    return;
   }
+
+  let filteredPosts = data.filter((post) => {
+    let titleLength = post.title.length;
+    let contentLength = post.body.length;
+    return titleLength < 20 && contentLength > 50;
+  });
+  let listArr725 = filteredPosts.map((post) => {
+    return `Title: "${post.title}". Content: "${post.body}"`;
+  });
+  createList("Task 7.25", listArr725);
 }
 
 task725(posts);
 
 // 7.26. HTML faile sukurti ul elementą ir tokiu pačiu formatu, kaip ankstesnėje užduotyje, išvesti tik tuos masyvo narius, kurių pavadinimas turi tarp 20 ir 30 simbolių ir kurių "body" turi tarp 70 ir 130 simbolių.
 function task726(data) {
-  if (data.length > 0) {
-    data.forEach((post) => {
-      let titleLength = post.title.length;
-      let contentLength = post.body.length;
-      if (
-        titleLength > 20 &&
-        titleLength < 30 &&
-        contentLength > 70 &&
-        contentLength < 130
-      ) {
-        let output = `Title: "${post.title}". Content: "${post.body}"`;
-        createLi("ul.ul-element726", output);
-      }
-    });
-  } else {
+  if (data.length === 0) {
     console.log(`The array is empty`);
+    return;
   }
+
+  let filteredPosts = data.filter((post) => {
+    let titleLength = post.title.length;
+    let contentLength = post.body.length;
+    return (
+      titleLength > 20 &&
+      titleLength < 30 &&
+      contentLength > 70 &&
+      contentLength < 130
+    );
+  });
+  let listArr726 = filteredPosts.map((post) => {
+    return `Title: "${post.title}". Content: "${post.body}"`;
+  });
+  createList("Task 7.26", listArr726);
 }
 
 task726(posts);
@@ -492,16 +544,18 @@ task726(posts);
 // 7.27. HTML faile sukurti ul elementą ir tokiu pačiu formatu, kaip ankstesnėje užduotyje, išvesti tik tuos masyvo narius, kurių pavadinimas turi simbolių junginį "it", o "body" turi simbolių junginį "quo".
 
 function task727(data) {
-  if (data.length > 0) {
-    data.forEach((post) => {
-      if (post.title.includes("it") && post.body.includes("quo")) {
-        let output = `Title: "${post.title}". Content: "${post.body}"`;
-        createLi("ul.ul-element727", output);
-      }
-    });
-  } else {
+  if (data.length === 0) {
     console.log(`The array is empty`);
+    return;
   }
+
+  let filteredPosts = data.filter(
+    (post) => post.title.includes("it") && post.body.includes("quo")
+  );
+  let listArr727 = filteredPosts.map((post) => {
+    return `Title: "${post.title}". Content: "${post.body}"`;
+  });
+  createList("Task 7.27", listArr727);
 }
 
 task727(posts);
@@ -509,17 +563,18 @@ task727(posts);
 // 7.28. HTML faile sukurti ul elementą ir tokiu pačiu formatu, kaip ankstesnėje užduotyje, išvesti tik tuos masyvo narius, kurių "body" turi žodį "sit". Jeigu žodis turi šį simbolių junginį, tačiau tai nėra pilna jo reikšmė (pvz. žodžiai "sitto" ar "quasit"), jie neturėtų būti atvaizduojami.
 
 function task728(data) {
-  if (data.length > 0) {
-    data.forEach((post) => {
-      let contentWords = post.body.split(" ");
-      if (contentWords.includes("sit")) {
-        let output = `Title: "${post.title}". Content: "${post.body}"`;
-        createLi("ul.ul-element728", output);
-      }
-    });
-  } else {
+  if (data.length === 0) {
     console.log(`The array is empty`);
+    return;
   }
+  let filteredPosts = data.filter((post) => {
+    let contentWords = post.body.split(" ");
+    return contentWords.includes("sit");
+  });
+  let listArr728 = filteredPosts.map((post) => {
+    return `Title: "${post.title}". Content: "${post.body}"`;
+  });
+  createList("Task 7.28", listArr728);
 }
 
 task728(posts);
@@ -527,20 +582,22 @@ task728(posts);
 // 7.29. HTML faile sukurti ul elementą ir tokiu pačiu formatu, kaip ankstesnėje užduotyje, išvesti tik tuos masyvo narius, kurių pavadinimas turi daugiau nei 3 "a" raides, o "body" turi mažiau nei 7 "o" raides.
 
 function task729(data) {
-  if (data.length > 0) {
-    data.forEach((post) => {
-      let title = post.title;
-      let titleChar = title.split("a");
-      let content = post.body;
-      let contentChar = content.split("o");
-      if (titleChar.length > 3 && contentChar.length > 7) {
-        let output = `Title: "${title}". Content: "${content}"`;
-        createLi("ul.ul-element729", output);
-      }
-    });
-  } else {
+  if (data.length === 0) {
     console.log(`The array is empty`);
+    return;
   }
+
+  let filteredPosts = data.filter((post) => {
+    let title = post.title;
+    let titleChar = title.split("a");
+    let content = post.body;
+    let contentChar = content.split("o");
+    return titleChar.length > 3 && contentChar.length < 7;
+  });
+  let listArr729 = filteredPosts.map((post) => {
+    return `Title: "${post.title}". Content: "${post.body}"`;
+  });
+  createList("Task 7.29", listArr729);
 }
 
 task729(posts);
@@ -548,18 +605,19 @@ task729(posts);
 // 7.30. HTML faile sukurti ul elementą ir tokiu pačiu formatu, kaip ankstesnėje užduotyje, išvesti visų masyvo narių pavadinimus surūšiuotus nuo mažiausiai iki daugiausiai raidžių "body" property turinčių narių. Papildomai, prie išvesto teksto pridėti ir "body" raidžių skaičių.
 
 function task730(data) {
-  if (data.length > 0) {
-    data.sort((a, b) => a.body.length - b.body.length);
-    data.forEach((post) => {
-      let title = post.title;
-      let content = post.body;
-      let contentLength = content.length;
-      let output = `Title: "${title}". Content: "${content}". Content has ${contentLength} letters`;
-      createLi("ul.ul-element730", output);
-    });
-  } else {
+  if (data.length === 0) {
     console.log(`The array is empty`);
+    return;
   }
+
+  data.sort((a, b) => a.body.length - b.body.length);
+  let listArr730 = data.map((post) => {
+    let title = post.title;
+    let content = post.body;
+    let contentLength = content.length;
+    return `Title: "${title}". Content: "${content}". Content has ${contentLength} letters`;
+  });
+  createList("Task 7.30", listArr730);
 }
 
 task730(posts);
